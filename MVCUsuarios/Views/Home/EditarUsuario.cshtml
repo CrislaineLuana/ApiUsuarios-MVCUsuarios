@@ -1,0 +1,36 @@
+﻿@using MVCUsuarios.Dto.Usuario
+@model UsuarioEdicaoDto
+
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<div class="container mt-5">
+    <h1>Edição de Usuários</h1>
+    <form asp-action="EditarUsuario" asp-controller="Home" method="post">
+
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label class="form-label">Email:</label>
+            <input type="text" class="form-control" asp-for="Email">
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Usuário:</label>
+            <input type="text" class="form-control" asp-for="Usuario">
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Nome:</label>
+            <input type="text" class="form-control" asp-for="Nome">
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Sobrenome:</label>
+            <input type="text" class="form-control" asp-for="Sobrenome">
+
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Editar</button>
+        <a asp-action="ListarUsuarios" asp-controller="Home" class="btn btn-secondary w-100">Voltar</a>
+    </form>
+</div>

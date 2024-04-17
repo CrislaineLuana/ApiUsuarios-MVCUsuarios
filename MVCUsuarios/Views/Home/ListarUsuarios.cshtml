@@ -1,0 +1,42 @@
+﻿@model IEnumerable<UsuarioModel>
+
+
+<div class="container mt-5">
+    <h1>Listagem de Usuários</h1>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Email</th>
+                <th>Usuário</th>
+                <th>Data Criação</th>
+                <th>Data Alteração</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model != null)
+            {
+                @if(Model.Count() > 0)
+                {
+                    @foreach(var usuario in Model)
+                    {
+                        <tr>
+                            <td>@usuario.Nome</td>
+                            <td>@usuario.Sobrenome</td>
+                            <td>@usuario.Email</td>
+                            <td>@usuario.Usuario</td>
+                            <td>@usuario.DataCriacao.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>@usuario.DataAlteracao.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>
+                                <a asp-action="EditarUsuario" asp-controller="Home" asp-route-id="@usuario.Id" class="btn btn-warning">Editar</a>
+                                <a asp-action="RemoverUsuario" asp-controller="Home" asp-route-id="@usuario.Id" class="btn btn-danger">Remover</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>

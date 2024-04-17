@@ -1,0 +1,24 @@
+﻿@using MVCUsuarios.Dto.Login
+@model UsuarioLoginDto
+
+@{
+    Layout = "_LayoutDeslogada";
+}
+
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<h1>Sistema de Usuários</h1>
+<div class="container mt-5">
+    <form asp-action="Login" asp-controller="Home" method="post">
+        <div class="mb-3">
+            <label class="form-label">Email:</label>
+            <input type="text" class="form-control" asp-for="Email">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Senha</label>
+            <input type="password" class="form-control" asp-for="Senha">
+        </div>
+        <button type="submit" class="btn btn-success w-100 mb-2">Entrar</button>
+        <a asp-action="Registrar" asp-controller="Home" class="btn btn-secondary w-100">Cadastrar-se</a>
+    </form>
+</div>

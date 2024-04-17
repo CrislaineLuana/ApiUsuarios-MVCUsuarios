@@ -2,6 +2,21 @@
 @model UsuarioEdicaoDto
 
 
+
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success text-dark" role="alert">
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger text-dark" role="alert">
+        @TempData["MensagemErro"]
+    </div>
+}
+
 <div asp-validation-summary="All" class="text-danger"></div>
 <div class="container mt-5">
     <h1>Edição de Usuários</h1>
@@ -30,7 +45,7 @@
 
         </div>
 
-        <button type="submit" class="btn btn-primary w-100">Editar</button>
+        <button type="submit" class="btn btn-primary w-100 mb-3">Editar</button>
         <a asp-action="ListarUsuarios" asp-controller="Home" class="btn btn-secondary w-100">Voltar</a>
     </form>
 </div>

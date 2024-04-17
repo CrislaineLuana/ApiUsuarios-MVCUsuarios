@@ -1,6 +1,21 @@
 ﻿@model IEnumerable<UsuarioModel>
 
 
+
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success text-dark" role="alert">
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger text-dark" role="alert">
+        @TempData["MensagemErro"]
+    </div>
+}
+
 <div class="container mt-5">
     <h1>Listagem de Usuários</h1>
     <table class="table table-striped table-bordered">

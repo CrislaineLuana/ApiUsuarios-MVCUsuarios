@@ -69,6 +69,7 @@ namespace ApiUsuarios_.Services.Usuario
                 await _context.SaveChangesAsync();
 
 
+                response.Mensagem = "Usuário Editado com sucesso!";
                 response.Dados = usuarioBanco;
 
                 return response;
@@ -131,6 +132,8 @@ namespace ApiUsuarios_.Services.Usuario
                 _context.Add(usuario);
                 await _context.SaveChangesAsync();
 
+
+                response.Mensagem = "Usuário Cadastrado com Sucesso!";
                 response.Dados = usuario;
                 return response;
 
@@ -170,6 +173,7 @@ namespace ApiUsuarios_.Services.Usuario
                 }
 
                 response.Dados = usuario;
+                response.Mensagem = "Usuário Removido com Sucesso!";
 
                 _context.Remove(usuario);
                 await _context.SaveChangesAsync();

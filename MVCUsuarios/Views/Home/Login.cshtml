@@ -5,6 +5,20 @@
     Layout = "_LayoutDeslogada";
 }
 
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success text-dark" role="alert">
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger text-dark" role="alert">
+        @TempData["MensagemErro"]
+    </div>
+}
+
 <div asp-validation-summary="All" class="text-danger"></div>
 
 <h1>Sistema de Usuários</h1>

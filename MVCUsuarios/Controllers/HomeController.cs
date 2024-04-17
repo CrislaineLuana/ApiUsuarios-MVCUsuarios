@@ -56,6 +56,7 @@ namespace MVCUsuarios.Controllers
 
             if (usuario == null)
             {
+                TempData["MensagemErro"] = "É necessário estar logado para acessar essa página";
                 return RedirectToAction("Login");
             }
 
@@ -98,6 +99,7 @@ namespace MVCUsuarios.Controllers
 
             if (usuario == null)
             {
+                TempData["MensagemErro"] = "É necessário estar logado para acessar essa página";
                 return RedirectToAction("Login");
             }
 
@@ -115,6 +117,7 @@ namespace MVCUsuarios.Controllers
                     usuarios = JsonConvert.DeserializeObject<ResponseModelMvc<UsuarioModel>>(data);
                 }
 
+                TempData["MensagemSucesso"] = usuarios.Mensagem;
                 return RedirectToAction("ListarUsuarios");
 
 
@@ -130,6 +133,7 @@ namespace MVCUsuarios.Controllers
 
             if(usuario == null)
             {
+                TempData["MensagemErro"] = "É necessário estar logado para acessar essa página";
                 return RedirectToAction("Login");
             }
 
@@ -165,6 +169,7 @@ namespace MVCUsuarios.Controllers
 
             if (usuario == null)
             {
+                TempData["MensagemErro"] = "É necessário estar logado para acessar essa página";
                 return RedirectToAction("Login");
             }
 
@@ -183,6 +188,7 @@ namespace MVCUsuarios.Controllers
                     usuarios = JsonConvert.DeserializeObject<ResponseModelMvc<UsuarioModel>>(data);
                 }
 
+                TempData["MensagemSucesso"] = usuarios.Mensagem;
                 return RedirectToAction("ListarUsuarios");
 
 
@@ -221,11 +227,13 @@ namespace MVCUsuarios.Controllers
                 }
 
 
+                TempData["MensagemSucesso"] = usuarios.Mensagem;                
                 return RedirectToAction("Login");
                 
             }
             else
             {
+                TempData["MensagemErro"] = "Ocorreu um erro no processo, procure pelo suporte!";
                 return View(usuarioCriacaoDto);
             }
             
@@ -240,6 +248,7 @@ namespace MVCUsuarios.Controllers
                 ResponseModelMvc<UsuarioModel> usuarios = new ResponseModelMvc<UsuarioModel>();
 
                 var httpContent = new StringContent(JsonConvert.SerializeObject(usuarioLoginDto), Encoding.UTF8, "application/json");
+
                 HttpResponseMessage response = await _httpClient.PostAsync(_httpClient.BaseAddress + "/Login/login", httpContent);
 
                 if (response.IsSuccessStatusCode)
